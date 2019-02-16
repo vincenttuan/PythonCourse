@@ -12,4 +12,9 @@ w = w[1]
 print(w)
 print('----------------')
 w = str.split(",")[0].split("=")[1]
-print(w)
+h = str.split(",")[1].split("=")[1]
+w = float(w)
+h = float(h)
+bmi = w / pow(h/100, 2)
+print(bmi)
+print("%.2f" % bmi)
