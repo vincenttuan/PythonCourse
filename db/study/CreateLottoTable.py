@@ -10,7 +10,7 @@ sql = 'create table if not exists lotto (' \
       'n6 INTEGER, ' \
       'ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP)'
 
-conn = sqlite3.connect('demo.db')
+conn = sqlite3.connect('../demo.db')
 cursor = conn.cursor()  # 建立 cursor
 cursor.execute(sql)  # 建立 lotto 資料表
 
