@@ -42,6 +42,8 @@ if __name__ == '__main__':
             m.delete_lotto(cursor, conn, id)
         elif choice == 7:
             m.analysis(cursor)
+        elif choice == 8:
+            m.ai(cursor)
         elif choice == 0:
             break
         input('按任意鍵返回主選單')

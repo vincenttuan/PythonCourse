@@ -139,3 +139,31 @@ def analysis(cursor):
     print()
     print("max = %d(%d)" % (lst.index(max(lst)), max(lst)))
     print()
+
+
+def ai(cursor):
+    # 查詢資料列 SQL
+    sql = 'SELECT id, n1, n2, n3, n4, n5, n6, ts FROM lotto'
+    cursor.execute(sql)
+    rows = cursor.fetchall()
+
+    lst = [0] * 47
+    for row in rows:
+        lst[row[1]] += 1
+        lst[row[2]] += 1
+        lst[row[3]] += 1
+        lst[row[4]] += 1
+        lst[row[5]] += 1
+        lst[row[6]] += 1
+
+    print(lst)
+
+    for i in range(7):
+        value = min(lst)
+        number = lst.index(value)
+        lst.remove(min(lst))
+        if value == 0:
+            continue
+        print('%d (%d)' % (number, value))
+
+    print()
