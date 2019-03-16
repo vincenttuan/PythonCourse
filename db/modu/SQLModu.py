@@ -110,3 +110,32 @@ def delete_lotto(cursor, conn, id):
 
     print('刪除 id=%d 資料成功 !' % id)
 
+
+def analysis(cursor):
+    # 查詢資料列 SQL
+    sql = 'SELECT id, n1, n2, n3, n4, n5, n6, ts FROM lotto'
+    cursor.execute(sql)
+    rows = cursor.fetchall()
+
+    lst = [0] * 47
+    for row in rows:
+        lst[row[1]] += 1
+        lst[row[2]] += 1
+        lst[row[3]] += 1
+        lst[row[4]] += 1
+        lst[row[5]] += 1
+        lst[row[6]] += 1
+
+    print(lst)
+
+    for idx, val in enumerate(lst):
+        if idx == 0:
+            continue
+        print('%02d : ' % idx, end='')
+        for x in range(val):
+            print("*", end='')
+        print(' (%d %.5f %.5f)' % (val, val/sum(lst), 1/46))
+
+    print()
+    print("max = %d(%d)" % (lst.index(max(lst)), max(lst)))
+    print()

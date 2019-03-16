@@ -6,7 +6,7 @@ cursor = conn.cursor()  # 建立 cursor
 
 lottos = []
 
-for i in range(1000):
+for i in range(100000):
     # 取出 1~46 不重複的數字六個
     nums = set()
     while len(nums) < 6:

@@ -40,7 +40,7 @@ if __name__ == '__main__':
             id = int(input('請輸入欲刪除id號碼 : '))
             m.delete_lotto(cursor, conn, id)
         elif choice == 7:
-            print('your choice ==> ' + str(choice))
+            m.analysis(cursor)
         elif choice == 0:
             break
         input('按任意鍵返回主選單')
