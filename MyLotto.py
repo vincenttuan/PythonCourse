@@ -18,7 +18,7 @@ def menu():
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-conn, cursor = m.connect('../demo.db')
+conn, cursor = m.connect('db/demo.db')
 
 if __name__ == '__main__':
 

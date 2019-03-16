@@ -132,7 +132,7 @@ def analysis(cursor):
         if idx == 0:
             continue
         print('%02d : ' % idx, end='')
-        for x in range(val):
+        for x in range(int(val/200)):
             print("*", end='')
         print(' (%d %.5f %.5f)' % (val, val/sum(lst), 1/46))
 
