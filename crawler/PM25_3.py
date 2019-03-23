@@ -15,13 +15,19 @@ def append_list_pm25():
         dic.setdefault('pm25_1', pm25[1].text.strip())
         list.append(dic)
 
+def get_pm25(name):
+    for d in list:
+        if d.get('name') == name:
+            return d
+
 list = []
 append_list_pm25()
 print(list)
 
 name = input('請輸入地區 ? (例如:林口, 桃園) : ')
-print(name)
-
+d = get_pm25(name)
+print(d)
+print(d.get('pm25'))
 
 
 
