@@ -1,7 +1,8 @@
 class Bird:
     def move(self):
         print('飛')
-
+    def play(self):
+        print('玩')
 
 class Eagle(Bird):
     pass
@@ -12,9 +13,11 @@ class Ostrich(Bird):
         print('跑')
 
 
-bird = Bird()
-bird.move()
-eagle = Eagle()
-eagle.move()
-ostrich = Ostrich()
-ostrich.move()
+def move(bird):
+    bird.move()
+    bird.play()
+
+list = [Bird(), Eagle(), Ostrich()]
+for bird in list:
+    move(bird)
+
