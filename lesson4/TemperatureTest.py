@@ -14,6 +14,7 @@ class Celsius: # 攝氏
 
 class Temperature: # 溫度
     celsius = Celsius()
+
     def __init__(self, f):
         self.fahrenheit = f # fahrenheit = 華氏
 
