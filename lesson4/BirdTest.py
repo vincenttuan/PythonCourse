@@ -1,6 +1,7 @@
 class Bird:
     def move(self):
         print('飛')
+
     def play(self):
         print('玩')
 
@@ -17,7 +18,8 @@ def move(bird):
     bird.move()
     bird.play()
 
-list = [Bird(), Eagle(), Ostrich()]
-for bird in list:
+
+bird_list = [Bird(), Eagle(), Ostrich()]
+for bird in bird_list:
     move(bird)
 
