@@ -6,6 +6,9 @@ url = 'https://tw.sports.yahoo.com/nba/standings/'
 html = requests.get(url, headers=headers)
 sp = BeautifulSoup(html.text, 'html.parser')
 
+#<span class="" data-reactid="31">3:38 第2節</span>
+print(sp.find("span", {"data-reactid":"31"}).text.strip());
+
 #<span data-tst="first-name" class="" data-reactid="40">布魯克林</span>
 #<div class="Fw(n) Fz(12px)" data-reactid="44">籃網</div>
 #<span class="" data-reactid="46">20</span>
@@ -19,6 +22,4 @@ print(sp.find("span", {"data-reactid":"46"}).text.strip());
 print(sp.find("span", {"data-reactid":"53"}).text.strip(), end="");
 print(sp.find("div", {"data-reactid":"57"}).text.strip(), end=" ");
 print(sp.find("span", {"data-reactid":"59"}).text.strip());
-
-
 
