@@ -2,8 +2,10 @@ class Human:
     name = ''
     age = 0
     sex = ''
+
     def __str__(self):
         return self.name + ',' + str(self.age) + ',' + self.sex
+
 
 human = Human()
 human.name = 'Vincent'
