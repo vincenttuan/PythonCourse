@@ -1,6 +1,8 @@
 import os
 import db_orm_youbike.YoubikeDAO as dao
 import db_orm_youbike.YoubikeUtil as util
+import threading
+import time
 
 def menu():
     clear_screen()
@@ -20,7 +22,17 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+def sched():
+    while True:
+        dao.delete_all()
+        dao.import_data()
+        time.sleep(10) # 10 秒
+
+
 if __name__ == '__main__':
+
+    t = threading.Thread(target=sched)
+    t.start()
 
     while True:
         menu()

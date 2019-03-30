@@ -1,5 +1,4 @@
-import json
-import requests
+import requests, json, datetime, time
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -75,5 +74,3 @@ def print_youbike(youbikes):
             youbike.lat,
             youbike.lng
         ))
-
-
