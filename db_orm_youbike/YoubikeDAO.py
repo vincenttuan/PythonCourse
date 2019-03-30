@@ -1,6 +1,5 @@
 # 匯入套件資源:
-from sqlalchemy import or_, create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import or_, and_
 from db_orm_youbike.Create import Youbike
 import db_orm_youbike.YoubikeUtil as util
 
@@ -57,6 +56,41 @@ def query_by(sno_sna):
     session = util.get_db_session()
     # 查詢 -----------------------------------------------------
     youbikes = session.query(Youbike).filter(or_(Youbike.sno.like('%' + sno_sna + '%'), Youbike.sna.like('%' + sno_sna + '%'))).all()
+    # ----------------------------------------------------------
+    # 關閉 session:
+    session.close()
+    return youbikes
+
+
+def query_sbi(sbi):
+    # 取得 session 物件對象:
+    session = util.get_db_session()
+    # 查詢 -----------------------------------------------------
+    youbikes = session.query(Youbike).filter(Youbike.sbi >= sbi).all()
+    # ----------------------------------------------------------
+    # 關閉 session:
+    session.close()
+    return youbikes
+
+
+def query_bemp(bemp):
+    # 取得 session 物件對象:
+    session = util.get_db_session()
+    # 查詢 -----------------------------------------------------
+    youbikes = session.query(Youbike).filter(Youbike.bemp >= bemp).all()
+    # ----------------------------------------------------------
+    # 關閉 session:
+    session.close()
+    return youbikes
+
+
+def query_sbi_bemp(sbi, bemp):
+    # 取得 session 物件對象:
+    session = util.get_db_session()
+    # 查詢 -----------------------------------------------------
+    youbikes = session.query(Youbike).filter(
+        and_(Youbike.sbi >= sbi, Youbike.bemp >= bemp)
+    ).all()
     # ----------------------------------------------------------
     # 關閉 session:
     session.close()

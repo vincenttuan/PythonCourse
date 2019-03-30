@@ -34,13 +34,16 @@ if __name__ == '__main__':
         elif choice == 3:
             youbikes = dao.query_by(input('請輸入站號或站名 : '))
             util.print_youbike(youbikes)
-            None
         elif choice == 4:
-            None
+            youbikes = dao.query_sbi(int(input('我要借(台) : ')))
+            util.print_youbike(youbikes)
         elif choice == 5:
-            None
+            youbikes = dao.query_bemp(int(input('我要還(台) : ')))
+            util.print_youbike(youbikes)
         elif choice == 6:
-            None
+            sbi, bemp = input('我要借(台), 還(台): 例如:30 30 => ').split()
+            youbikes = dao.query_sbi_bemp(int(sbi), int(bemp))
+            util.print_youbike(youbikes)
         elif choice == 0:
             break
         input('按任意鍵返回主選單')
