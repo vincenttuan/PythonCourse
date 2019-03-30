@@ -14,7 +14,7 @@ class User(Base):
     # 資料表欄位:
     id = Column('id', Integer, primary_key=True)
     name = Column(String(20), unique=True)
-    ts = Column(DateTime, default=datetime.datetime.utcnow)
+    ts = Column(DateTime, default=datetime.datetime.now)
 
 
 # 初始化資料庫連結:
