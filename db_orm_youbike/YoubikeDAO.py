@@ -1,19 +1,15 @@
 # 匯入套件資源:
-from sqlalchemy import create_engine
+from sqlalchemy import or_, create_engine
 from sqlalchemy.orm import sessionmaker
 from db_orm_youbike.Create import Youbike
 import db_orm_youbike.YoubikeUtil as util
 
 
 def import_data():
+    # 取得所有資料
     list = util.get_youbike_list()
-    # 初始化資料庫連結:
-    engine = create_engine('sqlite:///demo.db', echo=True)
-    # 創建 DBSession:
-    DBSession = sessionmaker(bind=engine)
-    # 創建 session 物件對象:
-    session = DBSession()
-
+    # 取得 session 物件對象:
+    session = util.get_db_session()
     # 新增 ------------------------------------------------------
     for youbike in list:
         new_youbike = Youbike(
@@ -34,9 +30,8 @@ def import_data():
 
 
 def delete_all():
-    engine = create_engine('sqlite:///demo.db', echo=False)
-    DBSession = sessionmaker(bind=engine)
-    session = DBSession()
+    # 取得 session 物件對象:
+    session = util.get_db_session()
     try:
         session.query(Youbike).delete()
         session.commit()
@@ -46,3 +41,23 @@ def delete_all():
     session.close()
 
 
+def query_all():
+    # 取得 session 物件對象:
+    session = util.get_db_session()
+    # 查詢 -----------------------------------------------------
+    youbikes = session.query(Youbike).all()
+    # ----------------------------------------------------------
+    # 關閉 session:
+    session.close()
+    return youbikes
+
+
+def query_by(sno_sna):
+    # 取得 session 物件對象:
+    session = util.get_db_session()
+    # 查詢 -----------------------------------------------------
+    youbikes = session.query(Youbike).filter(or_(Youbike.sno.like('%' + sno_sna + '%'), Youbike.sna.like('%' + sno_sna + '%'))).all()
+    # ----------------------------------------------------------
+    # 關閉 session:
+    session.close()
+    return youbikes

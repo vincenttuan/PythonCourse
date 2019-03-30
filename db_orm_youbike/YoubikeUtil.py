@@ -1,5 +1,14 @@
 import json
 import requests
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+
+def get_db_session():
+    engine = create_engine('sqlite:///demo.db', echo=False)
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    return session
 
 
 def get_youbike_list():
@@ -53,3 +62,18 @@ def get_youbike_test():
         except Exception as e:
             # print(e)
             None
+
+
+def print_youbike(youbikes):
+    for youbike in youbikes:
+        print("%s %s %d %d %d %f %f" % (
+            youbike.sno,
+            youbike.sna,
+            youbike.tot,
+            youbike.sbi,
+            youbike.bemp,
+            youbike.lat,
+            youbike.lng
+        ))
+
+

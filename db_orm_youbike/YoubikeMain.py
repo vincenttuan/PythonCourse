@@ -1,5 +1,6 @@
 import os
 import db_orm_youbike.YoubikeDAO as dao
+import db_orm_youbike.YoubikeUtil as util
 
 def menu():
     clear_screen()
@@ -28,8 +29,11 @@ if __name__ == '__main__':
             dao.delete_all()
             dao.import_data()
         elif choice == 2:
-            None
+            youbikes = dao.query_all()
+            util.print_youbike(youbikes)
         elif choice == 3:
+            youbikes = dao.query_by(input('請輸入站號或站名 : '))
+            util.print_youbike(youbikes)
             None
         elif choice == 4:
             None
