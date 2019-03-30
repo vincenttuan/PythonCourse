@@ -14,7 +14,9 @@ session = DBSession()
 
 # 查詢 -----------------------------------------------------
 
-users = session.query(User).all()
+# users = session.query(User).all()
+# users = session.query(User).filter(User.id > 3)
+users = session.query(User).filter(User.id > 3).filter(User.id < 5)
 for user in users:
     print('%d %s %s' % (user.id, user.name, user.ts))
 
